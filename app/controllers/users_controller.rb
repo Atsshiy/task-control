@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i(edit update)
 
   def index
-    @users = User.all 
+    @users = User.paginate(page: params[:page], per_page: 20)
   end
   
   def show
@@ -52,4 +52,6 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+    
+    
 end
