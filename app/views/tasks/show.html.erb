@@ -20,7 +20,8 @@
         </tr>
         <tr>
           <th class="active"><%= Task.human_attribute_name :created_at %></th>
-          <td><%= l(@task.created_at, format: :long) %></td></tr>
+          <td><%= l(@task.created_at, format: :long) %></td>
+        </tr>
         <tr>
           <th class="active"><%= Task.human_attribute_name :updated_at %></th>
           <td><%= l(@task.updated_at, format: :long) %></td>
