@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   before_action :correct_user
   
   def index
-    @tasks = @user.tasks
+    @tasks = @user.tasks.order("id DESC")
   end
   
   def show
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   def update
     if @task.update_attributes(task_params)
       flash[:success] = "タスクをを更新しました。"
-      redirect_to user_tasks_url(@user, @task)
+      redirect_to user_task_url(@user, @task)
     else
       render :edit
     end
@@ -54,8 +54,8 @@ class TasksController < ApplicationController
     
     def set_task
       unless @task = @user.tasks.find_by(id: params[:id])
-        flash[:danger] = "権限がありません。"
-        redirect_to user_tasks_url @user
+        flash[:danger] = "編集権限がありません。"
+        redirect_to user_tasks_path(current_user)
       end
     end
 end

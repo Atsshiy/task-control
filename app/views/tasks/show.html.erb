@@ -16,7 +16,9 @@
         </tr>
         <tr>
           <th class="active"><%= Task.human_attribute_name :description %></th>
-          <td><%= Rinku.auto_link(@task.description, :all, 'target="_blank"').html_safe %></td>
+          <td>
+            <%= simple_format(Rinku.auto_link(@task.description, :all, 'target="_blank"').html_safe) %>
+          </td>
         </tr>
         <tr>
           <th class="active"><%= Task.human_attribute_name :created_at %></th>
